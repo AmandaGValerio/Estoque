@@ -13,7 +13,7 @@ namespace Estoque
             Console.WriteLine("3- Registrar um pedido");
             Console.WriteLine("4- Cadastrar Cliente");
             Console.WriteLine("5- Mostrar todos os pedidos");
-            Console.WriteLine("6- ");
+            Console.WriteLine("6- Vender Peca");
             Console.WriteLine("7- ");
             Console.WriteLine("0- Sair da Aplicação");
             Console.WriteLine("Digite o número da opção escolhida: ");
@@ -29,18 +29,5 @@ namespace Estoque
                 db.SaveChanges();
             }
         }
-
-        // public static void ReadProduct()
-        // {
-        //     using (var db = new EstoqueContext())
-        //     {
-        //         List<Peca> pecas = db.Pecas.ToList();
-        //         foreach (Peca p in pecas)
-        //         {
-        //             Console.WriteLine("{0} {1}", p.Id, p.Nome);
-        //         }
-        //     }
-        //     return;
-        // }
     }
 }

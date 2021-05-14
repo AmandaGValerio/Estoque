@@ -1,54 +1,42 @@
 using System;
 using System.Data.Entity;
-using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Estoque
 {
-    public class Peca
+    public class Servico
     {
-        [Key]
         public Guid Id { get; set; }
         public string Nome { get; set; }
-        public string Marca { get; set; }
-        public int Quantidade { get; set; }
         public float Preco { get; set; }
 
-        public Peca()
-        {
-            Id = Guid.NewGuid();
-        }
-
-        public Peca(string nome, string marca, int quantidade, float preco)
+        public Servico (string nome, float preco)
         {
             Id = Guid.NewGuid();
             Nome = nome;
-            Marca = marca;
-            Quantidade = quantidade;
-            Preco = preco;
+            Preco = preco; 
         }
 
-        public bool TemNoEstoque(Guid id)
+        public Servico()
         {
-            //fazer um select no bancodotnet 
-            return true;
+            Id = Guid.NewGuid();
         }
 
         public static void Read()
         {
             using (var db = new EstoqueContext())
             {
-                List<Peca> pecas = db.Pecas.ToList();
-                foreach (Peca p in pecas)
+                List<Servico> servicos = db.Servicos.ToList();
+                foreach (Servico s in servicos)
                 {
-                    Console.WriteLine("{0}    {1}    {2}    {3}    {4}", p.Id, p.Nome, p.Marca, p.Quantidade, p.Preco);
+                    Console.WriteLine("{0}    {1}    {2}", s.Id, s.Nome, s.Preco);
                 }
             }
             return;
         }
 
-        public static Peca Vender(Guid IdBuscado, int quantidadeCompra)
+        public static Peca AgendarServicocd(Guid IdBuscado, int quantidadeCompra)
         {
             Peca peca;
             using (var db = new EstoqueContext())
@@ -63,18 +51,18 @@ namespace Estoque
                 db.SaveChanges();
             }
             return peca;
-        }
+        }  
 
         public static void deleteProduct()
         {
             using (var db = new EstoqueContext())
             {
-                Peca peca = db.Pecas.Find(1);
-                db.Pecas.Remove(peca);
+        
+                Servico servico = db.Servicos.Find(1);
+                db.Servicos.Remove(servico);
                 db.SaveChanges();
             }
             return;
-        }
-
+        }    
     }
 }

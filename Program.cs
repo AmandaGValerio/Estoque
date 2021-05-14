@@ -11,6 +11,7 @@ namespace Estoque
             Servico ServicoAux = new Servico();
             switch(operacao){
                 case 1:
+                    //1- Registrar Peça no estoque
                     Peca PecaAux = new Peca();
                     Console.Write("\n Nome: ");
                     PecaAux.Nome = Console.ReadLine();
@@ -23,6 +24,7 @@ namespace Estoque
                     Menu.AdicionarAoBanco(PecaAux);
                     break;
                 case 2: 
+                    //2- Registrar um serviço no catálogo
                     ServicoAux = new Servico();
                     Console.Write("\n Nome: ");
                     ServicoAux.Nome = Console.ReadLine();
@@ -31,10 +33,11 @@ namespace Estoque
                     Menu.AdicionarAoBanco(ServicoAux);
                     break;
                 case 3:
-                    //buscar serviço ou produto
-
+                    //3- Registrar um pedido
+                    
                     break;
                 case 4:
+                    //4- Cadastrar Cliente
                     Cliente ClienteAux = new Cliente();
                     Console.Write("\n Nome: ");
                     ClienteAux.Nome = Console.ReadLine();
@@ -47,7 +50,14 @@ namespace Estoque
                     Menu.AdicionarAoBanco(ClienteAux);
                     break;
                 case 5:
+                    //5- Mostrar todos os pedidos
                     Peca.Read();
+                    break;
+                case 6: 
+                    //6- Vender Peca
+                    Guid cod = Guid.Parse(Console.ReadLine());
+                    int qtd = Int32.Parse(Console.ReadLine());
+                    Peca.Vender(cod, qtd);
                     break;
                 case 0:
                     Console.WriteLine("Obrigada por escolher nosso sistema! :) ");
@@ -58,29 +68,5 @@ namespace Estoque
             }
             ServicoAux = new Servico();
         }
-
-        static void insertProduct()
-        {
-            using (var db = new EstoqueContext())
-            {
-                var nome = "Pen Drive";
-                var qtd = 3;
-                var preco = 2.3F;
-                var marca = "kingston";
-                Peca peca1 = new Peca(nome, marca, qtd, preco);
-                db.Add(peca1);
- 
-                nome = "tesoura";
-                qtd = 10;
-                preco = 3.5F;
-                marca = "3M";
-                peca1 = new Peca(nome, marca, qtd, preco);
-                db.Add(peca1);
- 
-                db.SaveChanges();
-            }
-            return;
-        }
-
     }
 }
