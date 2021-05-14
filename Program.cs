@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Estoque
 {
@@ -8,11 +9,14 @@ namespace Estoque
         {
             //pequeno projeto para trabalhar até a ferramenta visual estar pronta
             int operacao = Menu.MenuPrincipal();
+            Peca PecaAux;
             Servico ServicoAux = new Servico();
+            Guid cod;
+            int qtd;
             switch(operacao){
                 case 1:
                     //1- Registrar Peça no estoque
-                    Peca PecaAux = new Peca();
+                    PecaAux = new Peca();
                     Console.Write("\n Nome: ");
                     PecaAux.Nome = Console.ReadLine();
                     Console.Write("\n Marca: ");
@@ -34,7 +38,9 @@ namespace Estoque
                     break;
                 case 3:
                     //3- Registrar um pedido
-                    
+                    Pedido pedido = new Pedido();
+                    Console.WriteLine("Escolha as peças do pedido pelo ID: ");
+                    Peca.Read();
                     break;
                 case 4:
                     //4- Cadastrar Cliente
@@ -55,8 +61,8 @@ namespace Estoque
                     break;
                 case 6: 
                     //6- Vender Peca
-                    Guid cod = Guid.Parse(Console.ReadLine());
-                    int qtd = Int32.Parse(Console.ReadLine());
+                    cod = Guid.Parse(Console.ReadLine());
+                    qtd = Int32.Parse(Console.ReadLine());
                     Peca.Vender(cod, qtd);
                     break;
                 case 0:
@@ -64,9 +70,9 @@ namespace Estoque
                     Environment.Exit(0);
                     break;
                 default:
+                    Console.WriteLine("Opção inválida!");
                     break;
             }
-            ServicoAux = new Servico();
         }
     }
 }

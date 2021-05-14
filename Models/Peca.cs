@@ -9,7 +9,7 @@ namespace Estoque
     public class Peca
     {
         [Key]
-        public Guid Id { get; set; }
+        public Guid IdPeca { get; set; }
         public string Nome { get; set; }
         public string Marca { get; set; }
         public int Quantidade { get; set; }
@@ -17,12 +17,12 @@ namespace Estoque
 
         public Peca()
         {
-            Id = Guid.NewGuid();
+            IdPeca = Guid.NewGuid();
         }
 
         public Peca(string nome, string marca, int quantidade, float preco)
         {
-            Id = Guid.NewGuid();
+            IdPeca = Guid.NewGuid();
             Nome = nome;
             Marca = marca;
             Quantidade = quantidade;
@@ -42,7 +42,7 @@ namespace Estoque
                 List<Peca> pecas = db.Pecas.ToList();
                 foreach (Peca p in pecas)
                 {
-                    Console.WriteLine("{0}    {1}    {2}    {3}    {4}", p.Id, p.Nome, p.Marca, p.Quantidade, p.Preco);
+                    Console.WriteLine("{0}    {1}    {2}    {3}    {4}", p.IdPeca, p.Nome, p.Marca, p.Quantidade, p.Preco);
                 }
             }
             return;

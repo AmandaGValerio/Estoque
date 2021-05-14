@@ -17,5 +17,7 @@ namespace Estoque
         public DbSet<Peca> Pecas { get; set; }
         public DbSet<Pedido> Pedidos { get; set; }
         public DbSet<Servico> Servicos { get; set; }
+        public DbSet<PedidoServico> PedidosServico { get; set; }
+        public DbSet<PedidoPeca> PedidosPeca { get; set; }
     }
 }
