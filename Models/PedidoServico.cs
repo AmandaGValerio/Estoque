@@ -1,6 +1,7 @@
 using System;
 using System.Data.Entity;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq; 
 
 namespace Estoque
 {
@@ -14,12 +15,6 @@ namespace Estoque
         public PedidoServico()
         {
             
-        }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Blog>()
-                .HasNoKey();
         }
         
     }

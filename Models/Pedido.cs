@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Data.Entity;
 using System.Linq;
+using System.ComponentModel.DataAnnotations;
 
 namespace Estoque
 {
     public class Pedido
     {
+        [Key]
         public Guid IdPedido { get; set; }
         public Cliente Cliente { get; set; }
         public virtual DateTime DataPedido { get; set; }

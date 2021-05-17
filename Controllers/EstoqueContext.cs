@@ -19,5 +19,14 @@ namespace Estoque
         public DbSet<Servico> Servicos { get; set; }
         public DbSet<PedidoServico> PedidosServico { get; set; }
         public DbSet<PedidoPeca> PedidosPeca { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<PedidoServico>()
+                .HasNoKey();
+            modelBuilder.Entity<PedidoPeca>()
+                .HasNoKey();
+        }
+
     }
 }

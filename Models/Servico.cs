@@ -2,11 +2,13 @@ using System;
 using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
+using System.ComponentModel.DataAnnotations;
 
 namespace Estoque
 {
     public class Servico
     {
+        [Key]
         public Guid IdServico { get; set; }
         public string Nome { get; set; }
         public float Preco { get; set; }
